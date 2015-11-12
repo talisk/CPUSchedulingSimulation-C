@@ -38,6 +38,8 @@ void DeleteProcessFromQueue (PCBQueue &queue, PCBPtr process);
 
 void SortQueueWithPriority (PCBQueue &queue);
 
+void GetDataToQueue(string fileName, PCBQueue &queue);
+
 #pragma mark - Output
 
 void PrintQueue (PCBQueue &queue);

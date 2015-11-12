@@ -127,6 +127,35 @@ void SortQueueWithPriority (PCBQueue &queue) {
 
 }
 
+void GetDataToQueue(string fileName, PCBQueue &queue) {
+    char buffer[256];
+    ifstream in(fileName);
+    if (!in.is_open()) {
+        cout<<"Opening file error"<<endl;
+        exit(1);
+    }
+
+    while (!in.eof()) {
+        PCBPtr process = (PCBPtr)malloc(sizeof(PCB));
+
+        process->next = NULL;
+
+        in.getline(buffer,100);
+        process->processName = buffer;
+
+        in.getline(buffer,100);
+        process->requiredTime = atoi(buffer);
+
+        in.getline(buffer,100);
+        process->priority = atoi(buffer);
+
+        in.getline(buffer,100);
+        process->status = atoi(buffer);
+
+        EnterQueue(queue, process);
+    }
+}
+
 #pragma mark - Output
 
 void PrintQueue (PCBQueue &queue) { // success

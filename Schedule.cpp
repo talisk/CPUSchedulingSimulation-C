@@ -6,10 +6,10 @@
 
 void Run(PCBQueue &queue) {
     SortQueueWithPriority(queue);
-    cout<<"Now Run ==============="<<endl;
-    cout<<"Process "<<queue.front->processName<<endl;
+    cout<<"Now Run"<<endl;
     queue.front->priority--;
     queue.front->requiredTime--;
+    if (queue.front->requiredTime==0) queue.front->status = 0;
 
     PrintProcess(queue.front);
     cout<<endl;
@@ -25,5 +25,7 @@ void Run(PCBQueue &queue) {
 void Schedule(PCBQueue &queue) {
     while (queue.count!=0) {
         Run(queue);
-    } exit(0);
+    }
+    cout<<"Scheduling finished"<<endl;
+    exit(0);
 }
