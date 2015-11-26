@@ -71,7 +71,7 @@ void DeleteProcessFromQueue (PCBQueue &queue, PCBPtr process) {
 
     PCBPtr previousPtr = queue.front;
     PCBPtr movablePtr = queue.front->next;
-    if (queue.front->processName == process->processName) {
+    if (queue.front->processName == process->processName) {     // 如果删除的是第一个元素
         queue.front = queue.front->next;
         queue.count--;
     } else {
@@ -88,7 +88,7 @@ void DeleteProcessFromQueue (PCBQueue &queue, PCBPtr process) {
 }
 
 void SortQueueWithPriority (PCBQueue &queue) {
-    if (queue.count==0 && queue.count==1) return;
+    if (queue.count==0 || queue.count==1) return;
 
     // Init tempQueue
     PCBQueue tempQueue;

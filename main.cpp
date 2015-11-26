@@ -21,8 +21,15 @@ int main() {
         GetDataToQueue(path, queue);
     } else {
         // Fill data from user input
-        for (int i = 0; i < 3; ++i) {
-            EnterQueue(queue);
+        while(1) {
+            cout << "Anything else? 1/0?";
+            int choice;
+            cin >> choice;
+            if (!choice) {
+                break;
+            } else {
+                EnterQueue(queue);
+            }
         }
     }
 
